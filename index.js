@@ -54,13 +54,15 @@ const port = 3300;
 app.listen(port, () => {
     console.log(`Servidor corriendo en el puerto ${port} correctamente`);
 });
-//Conexión al cloud de Mongodb Atlas ...
-mongoose.connect("mongodb+srv://AsmaGrave:asmagrave2022@asmagravep.fqctihf.mongodb.net/?retryWrites=true&w=majority", {
+
+// Falta de mantenimiento en la base de datos, se cerró...
+/* mongoose.connect("mongodb+srv://AsmaGrave:asmagrave2022@asmagravep.fqctihf.mongodb.net/?retryWrites=true&w=majority", {
     serverSelectionTimeoutMS:0, // Defaults to 30000 (30 seconds)
 }) 
 .then((con) => {
     console.log("Conectado a la DB");
-});
+}); */
+
 
 //controlador principal
 app.get("/", (req, res) => {
@@ -74,13 +76,13 @@ app.get("/login", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
-    Admin.find({ apellido :1  }, (err, docs) => {
-        if(req.body.usuario != docs[0].usuario){
+    //Admin.find({ apellido :1  }, (err, docs) => {
+        if(req.body.usuario != "Doctor"){
             isLogin = 2;
             res.status(200).render("login", { isLogin: isLogin, login: req.session.login });
         }
         else{
-            bcrypt.compare(req.body.contraseña,bcrypt.hashSync(docs[0].contraseña, 5),(err, resul) => {
+            bcrypt.compare(req.body.contraseña,bcrypt.hashSync("adm", 5),(err, resul) => {
                 if (err) throw err;
 
                 if (resul) {
@@ -93,20 +95,12 @@ app.post("/login", (req, res) => {
             });
         }
     }); 
-});
+//});
 
 app.get('/seccionAdmin', (req, res) => {
     if(req.session.login){
-        
-        PostModel.find().sort({id: -1}).exec(function(err, post) {
-            Admin.find({apellido:1},(err, adm) => {      
-                console.log(post);
-                res.status(200).render("edicionPosteos", {data:post , adm:adm});
-            });
-        });
-        
-        
-    }
+                res.status(200).render("edicionPosteos", );
+            }
     else{
         res.status(200).render("index", {isLogin: 4,login: req.session.login, cerrar:0 , contactSweet:false}); 
     }

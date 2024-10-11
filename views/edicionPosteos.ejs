@@ -12,36 +12,35 @@
     <title>Publicaciones hechas</title>
 </head>
 
-<%-include('fragments/admin', {data:adm})%>
+<%-include('fragments/admin')%>
 
     <body>
         <main>
             <li class="publicacion">
                 <div class="row">
                     <ul id="paginated-list" data-current-page="1" aria-live="polite">
-                        <%data.forEach(function(e){%>
+                        
                             <li class="tarjeta">
                                 <div class="col-12">
                                     <div class="card">
                                         <div class="card-body">
                                             <h5 id="titulo" class="card-title">
-                                                <%=e.titulo%>
+                                                
                                             </h5>
                                             <p class="card-text">
-                                                <%=e.fecha%>
+                                               
                                             </p>
-                                            <a type="button" href="/visualizar/<%=e.id%>"
+                                            <a type="button" href="/visualizar/"
                                                 class="btn btnDark">Visualizar</a>
-                                            <a type="button" href="/editarpost/<%=e.id%>"
+                                            <a type="button" href="/editarpost/"
                                                 class="btn btn-primary">Editar</a>
                                             <a type="button"
-                                            onclick="Eliminar('<%=e.id%>','<%=e.titulo[0].toUpperCase()+(e.titulo).substring(1)%>')"
                                                 class="btn btn-danger">Eliminar</a>
                                         </div>
                                     </div>
                                 </div>
                             </li>
-                        <% });%>
+                      
                     </ul>
                 </div>
             </li>
