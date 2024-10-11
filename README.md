@@ -16,9 +16,6 @@ Descripción por acá
 
 -   Correr bla
 
-## Desarrolladores
-
-Lic. García Héctor  
 :link: https://bla.com
 
 ## Versión
