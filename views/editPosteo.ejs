@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edición de "<%=data[0].titulo%>"</title>
+    <link rel="stylesheet" href="/css/postEdit.css">
+    <script src="https://cdn.tiny.cloud/1/c9uj94cc9tj3cm8cb12ssqjzperjai9kx8il6mrwpn8twgso/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script>
+        let dfreeHeaderConfig = {
+            selector: '.dfree-header',
+            menubar: false,
+            inline: true,
+            toolbar: false,
+            plugins: ['quickbars'],
+            quickbars_insert_toolbar: 'undo redo',
+            quickbars_selection_toolbar: 'italic underline',
+        };
+
+        let dfreeBodyConfig = {
+            selector: '#mytextarea',
+            menubar: false,
+            inline: false,
+            plugins: [
+                'autolink',
+                'codesample',
+                'link',
+                'lists',
+                'powerpaste',
+                'table',
+                'quickbars',
+                'codesample',
+            ],
+            toolbar: false,
+            quickbars_insert_toolbar: 'quicktable image media codesample',
+            quickbars_selection_toolbar: 'bold italic underline | formatselect | blockquote quicklink',
+            contextmenu: 'undo redo | inserttable | cell row column deletetable | help',
+            powerpaste_word_import: 'clean',
+            powerpaste_html_import: 'clean',
+        };
+
+        tinymce.init(dfreeHeaderConfig);
+        tinymce.init(dfreeBodyConfig);
+
+    </script>
+</head>
+
+<body>
+    <%-include('fragments/admin.ejs')%>
+        <div class="editContainer">
+            <form action="/editarposteo/<%=data[0].id%>" method="post">
+                <div class="inputType">
+                    <div class="nameInput">
+                        <ion-icon name="text-outline"></ion-icon>
+                        <label for="titulo" class="title">Titulo</label>
+                    </div>
+                    <input type="text" name="titulo" id="titulo" value="<%=data[0].titulo%>">
+                </div>
+                <div class="inputType">
+                    <div class="nameInput">
+                        <ion-icon name="calendar-outline"></ion-icon>
+                        <label for="fecha" class="title">Fecha</label>
+                    </div>
+                    <input type="date" name="fecha" id="fecha" value="<%=data[0].fecha%>">
+                </div>
+                <div class="inputType">
+                    <div class="nameInput">
+                        <ion-icon name="reader-outline"></ion-icon>
+                        <label for="descripcion" class="title">Descripción</label>
+                    </div>
+                    <textarea name="descripcion" id="mytextarea" style="width: 500px"><%=data[0].descripcion%></textarea>
+                </div>
+                <div class="inputType">
+                    <div class="nameInput">
+                        <ion-icon name="image-outline"></ion-icon>
+                        <label for="image" class="title">Imágen</label>
+                    </div>
+                    <input type="file" name="imagen" id="imagen" accept="image/*" onchange="loadFile(event)">
+                    <img src="<%=data[0].imagen%>" id="outputImage">
+                </div>
+                <div class="inputType">
+                    <div class="nameInput">
+                        <ion-icon name="link-outline"></ion-icon>
+                        <label for="enlace" class="title">Enlace</label>
+                    </div>
+                    <input type="url" name="enlace" id="enlace" value="<%=data[0].enlace%>">
+                </div>
+                <div class="inputType">
+                    <div class="nameInput">
+                        <ion-icon name="pricetags-outline"></ion-icon>
+                        <label for="tags" class="title">Tags</label>
+                    </div>
+                    <input type="text" name="tags" value="<%=data[0].tags%>">
+                </div>
+                <input class="inputType" type="submit" value="Subir" id="subirPost">
+            </form>
+        </div>
+
+        <script>
+            let loadFile = (event) =>{
+                let reader = new FileReader();
+                reader.onload = () =>{
+                    let output = document.getElementById('outputImage');
+                    output.src = reader.result;
+                };
+                reader.readAsDataURL(event.target.files[0]);
+            }
+        </script>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+</body>
+
+</html>

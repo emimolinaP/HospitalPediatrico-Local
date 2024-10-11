@@ -1,0 +1,107 @@
+
+        <h2 class="mb-lg-2 mb-7 centrar-texto">Contacto</h2>
+        <div class="container">
+            <form action="/contactForm" method="post">
+                <span class="obligatorio">* Obligatorio</span>
+                <div class="col-md-6">
+                    <label for="titulo">&#128304; Nombre</label>
+                    <span class="obligatorio">*</span>
+                </div>
+                <div class="col-100">
+                    <input
+                        type="text"
+                        name="nombre"
+                        id="nombre"
+                        placeholder="Ingresa tu nombre..."
+                    />
+                </div>
+                <div class="col-md-6">
+                    <label for="apellido">&#128213; Apellido</label>
+                    <span class="obligatorio">*</span>
+                </div>
+                <div class="col-100">
+                    <input
+                        type="text"
+                        name="apellido"
+                        id="apellido"
+                        placeholder="Agrega tu apellido..."
+                    />
+                </div>
+                <div class="col-md-6">
+                    <label for="email">&#128231; Correo electrónico</label>
+                    <span class="obligatorio">*</span>
+                </div>
+                <div class="col-100">
+                    <input
+                        type="text"
+                        name="correo"
+                        id="correo"
+                        placeholder="Ingresa tu correo electronico..."
+                    />
+                </div>
+                <div class="col-md-6">
+                    <label for="telefono">&#128222; Teléfono</label>
+                </div>
+                <div class="col-100">
+                    <input
+                        type="text"
+                        name="telefono"
+                        id="telefono"
+                        placeholder="Ingresa tu numero de telefono.."
+                    />
+                </div>
+                <div class="col-md-6">
+                    <label for="Consulta">&#128172; Consulta</label>
+                    <span class="obligatorio">*</span>
+                </div>
+                <div class="col-100">
+                    <textarea name="consulta" id="consulta" cols="30" rows="10">
+                    </textarea>
+                </div>
+                <div class="row align-items-center">
+                    <input type="submit" value="Subir" id="botonsubmit" />
+                </div>
+            </form>
+        </div>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        
+        <script type="text/javascript">
+            //Validacion de los inputs del formulario para posteos
+            const botonpress = document.getElementById("botonsubmit");
+            const nombreinp = document.getElementById("nombre");
+            const apellidoinp = document.getElementById("apellido");
+            const correoinp = document.getElementById("correo");
+            const telefonoinp = document.getElementById("telefono");
+            const consultainp = document.getElementById("consulta");
+
+            botonpress.addEventListener("click", (e) => {
+                // Validacion si los campos esnta vacios
+                if (
+                    validator.isEmpty(nombreinp.value) == true ||
+                    validator.isEmpty(apellidoinp.value) == true ||
+                    validator.isEmpty(correoinp.value) == true ||
+                    validator.isEmpty(consultainp.value) == true
+                ) {
+                    const contactToast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    showCloseButton: true
+                  });
+            
+                  contactToast.fire({
+                    icon: "success",
+                    title: "Consulta enviada correctamente",
+                  });
+                    e.preventDefault();
+                }
+                //validacion cantidad de caracteres de la consulta
+                else if (
+                    validator.isLength(consultainp.value, {min: 10, max: 600,}) == false
+                ) {
+                    e.preventDefault();
+                } 
+            });
+        </script>

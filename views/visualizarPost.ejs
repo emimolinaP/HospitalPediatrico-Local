@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%=data[0].titulo%>
+    </title>
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/visualizarPost.css">
+    <link rel="stylesheet" href="/css/footer.css">
+</head>
+
+<body>
+    <%-include('fragments/navbar.ejs')%>  
+        <div class="contenedorNoticia">
+            <div class="tituloNoticia">
+                <%=data[0].titulo%>
+            </div>
+            <div class="imgNoticia">
+                <img id="myImg" src="<%=data[0].imagen%>" alt="<%=data[0].titulo%>" style="width:100%;">
+                <div id="myBtn" class="iContainer">
+                    <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+                </div>
+                <div id="myModal" class="modal">
+                    <span class="close">&times;</span>
+                    <img class="modal-content" id="img01">
+                </div>
+                
+            </div>
+            <div class="fechaNoticia">
+                <%=data[0].fecha%>
+            </div>      
+            <div id="output" class="descripcionNoticia">
+                <!-- Acá se ingresa la descripción -->
+            </div>
+            <textarea id="input"><%=data[0].descripcion%></textarea>
+        </div>
+        <script>
+            document.onload = document.getElementById("output").innerHTML = document.getElementById("input").value;  
+        </script>
+        <script src="/js/visualizarPost.js"></script>
+        
+
+
+</body>
+</html>

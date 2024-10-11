@@ -1,0 +1,82 @@
+<link rel="stylesheet" href="css/navbar.css">
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+<nav>
+    <div class="nab">
+        <i class='bx bx-menu'></i>
+        <div class="logo">
+            <img src="/images/logo.png" title="Seccion Asmática" alt="seccion asmatica">
+            <div class="nombrePagina">
+                <div class="programa">Programa de Asma Grave</div>
+                <div class="hospital">Hospital Pediatrico del Niño Jesús</div>
+            </div>
+        </div>
+        <div class="nav-links">
+            <div class="sidebar-logo">
+                <span class="logo-name">Asma Grave</span>
+                <i class='bx bx-x'></i>
+            </div>
+            <ul class="links">
+                <li><a href="/">Inicio</a></li>
+                <li>
+                    <a href="#">Divisiones</a>
+                    <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
+                    <ul class="htmlCss-sub-menu sub-menu">
+                        <li class="kinesiologia" ><a href="/kinesiologia">Kinesiología</a></li>
+                        <li class="saludMental" ><a href="/saludmental">Salud Mental</a></li>
+                        <li class="neumonologia"><a href="/neumonologia">Neumonología</a></li>
+
+                    </ul>
+                </li>
+
+                <li><a href="/verPostsUsuario">Artículos</a></li>
+                <li><a href="/seccionAdmin">Administración</a></li>
+                <li><a href="/contactanos">Contacto</a></li>
+
+                <div class="ingresoAdmin">
+                    <% if(login){ %>
+                        <a href="/logout"><button type="button">Cerrar sesión</button></a>
+
+                        <%}else{ %>
+                            <a href="/login"><button type="button">Iniciar sesión</button></a>
+                            <%}%>
+                </div>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+<script>
+    // search-box open close js code
+    let navbar = document.querySelector(".nab");
+
+    // let searchBoxCancel = document.querySelector(".search-box .bx-x");
+
+
+    // sidebar open close js code
+    let navLinks = document.querySelector(".nav-links");
+    let menuOpenBtn = document.querySelector(".nab .bx-menu");
+    let menuCloseBtn = document.querySelector(".nav-links .bx-x");
+    menuOpenBtn.onclick = function () {
+        navLinks.style.left = "0";
+    }
+    menuCloseBtn.onclick = function () {
+        navLinks.style.left = "-100%";
+    }
+
+
+    // sidebar submenu open close js code
+    let htmlcssArrow = document.querySelector(".htmlcss-arrow");
+    htmlcssArrow.onclick = function () {
+        navLinks.classList.toggle("show1");
+    }
+    let moreArrow = document.querySelector(".more-arrow");
+    moreArrow.onclick = function () {
+        navLinks.classList.toggle("show2");
+    }
+    let jsArrow = document.querySelector(".js-arrow");
+    jsArrow.onclick = function () {
+        navLinks.classList.toggle("show3");
+    }
+
+</script>

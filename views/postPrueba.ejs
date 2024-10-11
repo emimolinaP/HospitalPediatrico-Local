@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%-include('fragments/head')%>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>formularioPost</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="css/bootstrap-icons.css" rel="stylesheet" />
+
+    <link href="css/owl.carousel.min.css" rel="stylesheet" />
+
+    <link href="css/owl.theme.default.min.css" rel="stylesheet" />
+
+    <link href="/css/formPrueba.css" rel="stylesheet" />
+
+
+    <script src="https://cdn.tiny.cloud/1/c9uj94cc9tj3cm8cb12ssqjzperjai9kx8il6mrwpn8twgso/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script>
+        let dfreeHeaderConfig = {
+            selector: '.dfree-header',
+            menubar: false,
+            inline: true,
+            toolbar: false,
+            plugins: ['quickbars'],
+            quickbars_insert_toolbar: 'undo redo',
+            quickbars_selection_toolbar: 'italic underline',
+        };
+
+        let dfreeBodyConfig = {
+            selector: '#mytextarea',
+            menubar: false,
+            inline: false,
+            plugins: [
+                'autolink',
+                'codesample',
+                'link',
+                'lists',
+                'powerpaste',
+                'table',
+                'quickbars',
+                'codesample',
+            ],
+            toolbar: false,
+            quickbars_insert_toolbar: 'quicktable image media codesample',
+            quickbars_selection_toolbar: 'bold italic underline | formatselect | blockquote quicklink',
+            contextmenu: 'undo redo | inserttable | cell row column deletetable | help',
+            powerpaste_word_import: 'clean',
+            powerpaste_html_import: 'clean',
+        };
+
+        tinymce.init(dfreeHeaderConfig);
+        tinymce.init(dfreeBodyConfig);
+
+    </script>
+</head>
+
+<body>
+    <%-include('fragments/admin', {login:login})%>
+        
+        <form id="signUpForm" action="/subirpost" enctype="multipart/form-data" method="post" data-mdb-toggle="animation">
+            <h3 class="text-center fs-3">Crear post</h3>
+            <div class="form-header d-flex mb-4">
+                <span class="stepIndicator"></span>
+                <span class="stepIndicator"></span>
+            </div>
+
+            <div class="step animate__animated animate__backInLeft" >
+                <div class="mb-3">
+                    <div class="row needs-validation" novalidate>
+                        <div class="col-25">
+                            <ion-icon name="text-outline"></ion-icon>
+                            <label for="titulo">Titulo</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" name="titulo" id="titulo" placeholder="Agrega un titulo.." required />
+                        </div>
+                    </div>
+                </div>
+                <div class="row needs-validation" novalidate>
+                    <div class="col-30">
+                        <ion-icon name="reader-outline"></ion-icon>
+                        <label for="descripcion">Descripcion</label>
+                    </div>
+                    <div class="col-75">
+                        <textarea id="mytextarea" name="descripcion" placeholder="Agrega una descripcion.." style="height: 100px" ></textarea>
+                    </div>
+                </div>
+            
+
+            <div class="row needs-validation" novalidate>
+                <div class="col-25">
+                    <ion-icon name="calendar-number-outline"></ion-icon>
+                    <label for="fecha">Fecha</label>
+                    <span class="obligatorio">*</span>
+                </div>
+                <div class="col-75">
+                    <input type="date" id="fecha" name="fecha" />
+                </div>
+            </div>
+            </div>
+            <div class="step animate__animated animate__backInLeft" >
+                <div class="row needs-validation" novalidate>
+                    <div class="col-25">
+                        <ion-icon name="document-attach-outline"></ion-icon>
+                        <label for="image">Select image</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="file" name="imagen" />
+                    </div>
+
+                    <div class="row needs-validation" novalidate>
+                        <div class="col-25">
+                            <ion-icon name="link-outline"></ion-icon>
+                            <label for="enlace">Enlace</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" name="enlace" placeholder="Agrega un enlace.." />
+                        </div>
+                    </div>
+                    <div class="row needs-validation" novalidate>
+                        <div class="col-25">
+                            <ion-icon name="pricetags-outline"></ion-icon>
+                            <label class="letras" for="tag">Tag:</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="tag" name="tag"
+                                placeholder="Los tags deben estar separados por una ','" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-footer">
+                <button type="button" id="prevBtn" onclick="nextPrev(-1)">Anterior</button>
+                <button type="button" id="nextBtn" onclick="nextPrev(1)">siguiente</button>
+            </div>
+        </form>
+
+
+        </div>
+
+        </div>
+
+        <!-- footer-->
+        <!-- JAVASCRIPT FILES -->
+      
+        <!-- JavaScript Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/scrollspy.min.js"></script>
+        <script src="js/custom.js"></script>
+
+
+        <script type="text/javascript">
+            var currentTab = 0;
+            showTab(currentTab); 
+            function swals(icon, textoError) {
+                Swal.fire({
+                    position: "top-end",
+                    icon: icon,
+                    text: textoError,
+                    showConfirmButton: false,
+                    timer: 2500,
+                    width: 300,
+                    padding: 0.5,
+                });
+            }
+
+            function showTab(n) {              
+                var x = document.getElementsByClassName("step");
+                x[n].style.display = "block";
+                
+                if (n == 0) {
+                    document.getElementById("prevBtn").style.display = "none";
+                } else {
+                    document.getElementById("prevBtn").style.display = "inline";
+                }
+                if (n == (x.length - 1)) {
+                    document.getElementById("nextBtn").innerHTML = "Publicar";
+                } else {
+                    document.getElementById("nextBtn").innerHTML = "Siguiente";
+                }
+                
+                fixStepIndicator(n)
+            }
+
+            function nextPrev(n) {
+               
+                var x = document.getElementsByClassName("step");
+                if (n == 1 && !validateForm()) return false;
+                // Hide the current tab:
+                x[currentTab].style.display = "none";
+                // Increase or decrease the current tab by 1:
+                currentTab = currentTab + n;
+                // if you have reached the end of the form...
+                if (currentTab >= x.length) {
+                    // ... the form gets submitted:
+                    document.getElementById("signUpForm").submit();
+                    return false;
+                }
+                // Otherwise, display the correct tab:
+                showTab(currentTab);
+            }
+
+            function validateForm() {
+                var x, z, valid = true;
+                x = document.getElementsByClassName("step");
+                const tituloinp = document.getElementById("titulo");
+
+                const fechainp = document.getElementById("fecha");
+                z= x[currentTab].getElementsByTagName("textarea");
+                    // If a field is empty...
+                    if (
+                        validator.isEmpty(tituloinp.value) == true ||
+                        validator.isEmpty(fechainp.value) == true 
+                    ) {
+                        
+                        tituloinp.className += " invalid";
+                        fechainp.className += " invalid";
+                        // and set the current valid status to false
+                        valid = false;
+                        swals(
+                            "error",
+                            "algunos campos obligatorios no estan siendo completados"
+                         );
+                    } 
+                
+              
+                // If the valid status is true, mark the step as finished and valid:
+                if (valid) {
+                    document.getElementsByClassName("stepIndicator")[currentTab].className += " finish";
+                }
+                return valid; // return the valid status
+            }
+
+            function fixStepIndicator(n) {
+                // This function removes the "active" class of all steps...
+                var i, x = document.getElementsByClassName("stepIndicator");
+                for (i = 0; i < x.length; i++) {
+                    x[i].className = x[i].className.replace(" active", "");
+                }
+                //... and adds the "active" class on the current step:
+                x[n].className += " active";
+            }
+        </script>

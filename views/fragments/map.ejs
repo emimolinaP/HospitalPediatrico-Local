@@ -1,0 +1,31 @@
+
+        <script
+            type="text/javascript"
+            src="https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=AqcB0nGFtpJ4G_FqucZVRZrjoYOVpPxTGfHz9XCEWlZ_pLKtDCjUuYqug9wOJ8CJ"
+            async
+            defer
+        ></script>
+
+        <script type="text/javascript">
+            function GetMap() {
+                let map = new Microsoft.Maps.Map("#myMap", {
+                    center: new Microsoft.Maps.Location(
+                        -31.39896246974225,
+                        -64.19744430043583
+                    ),
+                    disableScrollWheelZoom: true,
+                    zoom: 18,
+                });
+                let center = map.getCenter();
+                let pin = new Microsoft.Maps.Pushpin(center, {
+                    text: "",
+                });
+                map.entities.push(pin);
+            }
+        </script>
+        <div
+            id="myMap"
+            class="map"
+            style="position: relative; width: auto; height: auto"
+            div
+        ></div>

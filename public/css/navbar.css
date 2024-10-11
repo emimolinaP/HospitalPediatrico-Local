@@ -1,0 +1,370 @@
+ /* Googlefont Poppins CDN Link */
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  min-height: 100vh;
+}
+nav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  height: 80px;
+  background: #edfaff;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  z-index: 99;
+}
+nav .nab{
+  max-width: 1250px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+}
+.nab .logo a{
+  font-size: 30px;
+  color: rgb(26, 26, 26);
+  text-decoration: none;
+  font-weight: 600;
+}
+nav .logo{
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    column-gap: 30px;
+    align-items: center;
+    padding-left: 5%;
+}
+.logo img{
+    width: 60px;
+    height: 60px;
+}
+.nombrePagina .programa{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.nombrePagina .hospital{
+    font-size: 16px;
+}
+.ingresoAdmin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ingresoAdmin a{
+    text-decoration: none;
+}
+.ingresoAdmin button{
+    height: 35px;
+    width: 160px;
+    border-radius: 30px;
+    border: none;
+    background-color: #6353df;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 2s;
+    font-size: 17px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.ingresoAdmin button:hover{
+    background-color:#948adb;
+}
+
+nav .nab .nav-links{
+  line-height: 70px;
+  height: 100%;
+}
+nav .nab .links{
+  display: flex;
+}
+nav .nab .links li{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0 14px;
+}
+nav .nab .links li a{
+  height: 100%;
+  text-decoration: none;
+  white-space: nowrap;
+  color: rgb(26, 26, 26);
+  font-size: 15px;
+  font-weight: 500;
+}
+.links li:hover .htmlcss-arrow,
+.links li:hover .js-arrow{
+  transform: rotate(180deg);
+  }
+
+nav .nab .links li .arrow{
+  /* background: red; */
+  height: 100%;
+  width: 22px;
+  line-height: 70px;
+  text-align: center;
+  display: inline-block;
+  color: rgb(26, 26, 26);
+  transition: all 0.3s ease;
+}
+nav .nab .links li .sub-menu{
+  position: absolute;
+  top: 70px;
+  left: 0;
+  line-height: 40px;
+  background: #edfaff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 4px 4px;
+  display: none;
+  z-index: 2;
+}
+nav .nab .links li:hover .htmlCss-sub-menu,
+nav .nab .links li:hover .js-sub-menu{
+  display: block;
+}
+.nab .links li .sub-menu li{
+  padding: 0 22px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.nab .links li .sub-menu a{
+  color: rgb(26, 26, 26);
+  font-size: 15px;
+  font-weight: 500;
+}
+.nab .links li .sub-menu .more-arrow{
+  line-height: 40px;
+}
+.nab .links li .htmlCss-more-sub-menu{
+  /* line-height: 40px; */
+}
+.nab .links li .sub-menu .more-sub-menu{
+  position: absolute;
+  top: 0;
+  left: 100%;
+  border-radius: 0 4px 4px 4px;
+  z-index: 1;
+  display: none;
+}
+.links li .sub-menu .more:hover .more-sub-menu{
+  display: block;
+}
+.nab .search-box{
+  position: relative;
+   height: 40px;
+  width: 40px;
+}
+.nab .search-box i{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  line-height: 40px;
+  text-align: center;
+  font-size: 22px;
+  color: rgb(26, 26, 26);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.nab .search-box .input-box{
+  position: absolute;
+  right: calc(100% - 40px);
+  top: 80px;
+  height: 60px;
+  width: 300px;
+  background: #edfaff;
+  border-radius: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease;
+}
+.nab.showInput .search-box .input-box{
+  top: 65px;
+  opacity: 1;
+  pointer-events: auto;
+  background: #edfaff;
+}
+.search-box .input-box::before{
+  content: '';
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  background: #edfaff;
+  right: 10px;
+  top: -6px;
+  transform: rotate(45deg);
+}
+.search-box .input-box input{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 4px;
+  transform: translate(-50%, -50%);
+  height: 35px;
+  width: 280px;
+  outline: none;
+  padding: 0 15px;
+  font-size: 16px;
+  border: none;
+}
+.kinesiologia:hover{
+    background-color: #54e2417e;
+}
+.saludMental:hover{
+    background-color: #e241417e;
+}
+.neumonologia:hover{
+    background-color: #4167e27e;
+}
+.nab .nav-links .sidebar-logo{
+  display: none;
+}
+.nab .bx-menu{
+  display: none;
+}
+@media (min-width: 921px){
+    .nombrePagina{
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media (max-width:1024px) {
+    .nombrePagina{
+        display: none;
+    }
+    nav{
+      width: 100%;
+    }
+    nav .nab{
+    max-width: 100%;
+    padding: 0 25px;
+  }
+  nav .logo{
+    width: 20%;
+  }
+  nav .nab .logo a{
+    font-size: 27px;
+  }
+  nav .nab .links li{
+    padding: 0 10px;
+    white-space: nowrap;
+  }
+  nav .nab .links li a{
+    font-size: 15px;
+  }
+}
+@media (max-width:800px){
+  nav{
+    position: relative;
+  }
+  nav .nab{
+    width: 100%;
+  }
+  .nab .bx-menu{
+    display: block;
+  }
+  nav .nab .nav-links{
+    position: fixed;
+    top: 0;
+    left: -100%;
+    display: block;
+    max-width: 270px;
+    width: 100%;
+    background: #edfaff;
+    line-height: 40px;
+    padding: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s ease;
+    z-index: 1000;
+  }
+  .nab .nav-links .sidebar-logo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .sidebar-logo .logo-name{
+    font-size: 25px;
+    color: rgb(26, 26, 26);
+  }
+    .sidebar-logo  i,
+    .nab .bx-menu{
+      font-size: 25px;
+      color: rgb(26, 26, 26);
+    }
+  nav .nab .links{
+    display: block;
+    margin-top: 20px;
+  }
+  nav .nab .links li .arrow{
+    line-height: 40px;
+  }
+nav .nab .links li{
+    display: block;
+  }
+nav .nab .links li .sub-menu{
+  position: relative;
+  top: 0;
+  box-shadow: none;
+  display: none;
+}
+nav .nab .links li .sub-menu li{
+  border-bottom: none;
+
+}
+.nab .links li .sub-menu .more-sub-menu{
+  display: none;
+  position: relative;
+  left: 0;
+}
+.nab .links li .sub-menu .more-sub-menu li{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.links li:hover .htmlcss-arrow,
+.links li:hover .js-arrow{
+  transform: rotate(0deg);
+  }
+  .nab .links li .sub-menu .more-sub-menu{
+    display: none;
+  }
+  .nab .links li .sub-menu .more span{
+    /* background: red; */
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+  }
+
+  .links li .sub-menu .more:hover .more-sub-menu{
+    display: none;
+  }
+  nav .nab .links li:hover .htmlCss-sub-menu,
+  nav .nab .links li:hover .js-sub-menu{
+    display: none;
+  }
+.nab .nav-links.show1 .links .htmlCss-sub-menu,
+  .nab .nav-links.show3 .links .js-sub-menu,
+  .nab .nav-links.show2 .links .more .more-sub-menu{
+      display: block;
+    }
+    .nab .nav-links.show1 .links .htmlcss-arrow,
+    .nab .nav-links.show3 .links .js-arrow{
+        transform: rotate(180deg);
+}
+    .nab .nav-links.show2 .links .more-arrow{
+      transform: rotate(90deg);
+    }
+  
+}

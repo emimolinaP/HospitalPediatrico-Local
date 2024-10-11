@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de sesión</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+   
+</head>
+<body>
+    <%-include('fragments/navbar',{login:login})%>
+    <div class="login-card-container">
+        <div class="login-card">
+            <div class="login-card-logo">
+                <img src="/images/logo.png" alt="logo">
+            </div>
+            <div class="login-card-header">
+                <h1>Iniciar sesión</h1>
+                <!-- <div></div> -->
+            </div>
+            <form class="login-card-form" action="/login" method="post">
+                <div class="form-item">
+                    <span class="form-item-icon material-symbols-rounded"><i class="fa-regular fa-envelope"></i></span>
+                    <input type="text" name="usuario" placeholder="Ingrese su nombre de usuario" required autofocus>
+                </div>
+                <div class="form-item">
+                    <span class="form-item-icon material-symbols-rounded"><i class="fa-solid fa-lock"></i></span>
+                    <input type="password" name="contraseña" placeholder="Ingrese su contraseña" required>
+                </div>
+                <div class="form-item-other">
+                    <div class="checkbox">
+                        <input type="checkbox" id="rememberMeCheckbox">
+                        <label for="rememberMeCheckbox">Recordarme</label>
+                    </div>
+                </div>
+                <button type="submit">Iniciar sesión</button>
+            </form>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/6e2e3e8384.js" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <% if(isLogin == 2){ %>
+        <script>
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            showCloseButton: true
+          });
+    
+          Toast.fire({
+            icon: "error",
+            title: "Usuario y/o Contraseña incorrectos",
+          });
+        </script>
+        <% } %> 
+        
+        <% if(isLogin == 3){ %>
+        <script>
+        const Toast2 = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            showCloseButton: true
+          });
+    
+          Toast2.fire({
+            icon: "error",
+            title: "Ingresa los datos requeridos",
+          });
+        </script>
+    
+        <% } %>
+
+        <% if(isLogin == 4){ %>
+            <script>
+                const Toast3 = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    showCloseButton: true
+                  });
+            
+                  Toast3.fire({
+                    icon: "success",
+                    title: "Usuario y/o Contraseña modificado con exito",
+                  });
+                </script>
+            
+        
+            <% } %>
+    
+</body>
+</html>
